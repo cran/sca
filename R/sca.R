@@ -813,28 +813,6 @@ firstpcres <- function(S,P) {
   return(pc)
 }
 
-##----------------------------------------------------------------------------
-if(!exists("cov2cor", mode = "function"))## will be in R 1.8.x
-cov2cor <- function(V)
-{
-    ## Purpose: Covariance matrix |--> Correlation matrix -- efficiently
-    ## ----------------------------------------------------------------------
-    ## Arguments: V: a covariance matrix (i.e. symmetric and positive definite)
-    ## ----------------------------------------------------------------------
-    ## Author: Martin Maechler, Date: 12 Jun 2003, 11:50
-    p <- (d <- dim(V))[1]
-    if(!is.numeric(V) || length(d) != 2 || p != d[2])
-	stop("`V' is not a square numeric matrix")
-    Is <- sqrt(1/diag(V)) # diag( 1/sigma_i )
-    if(any(!is.finite(Is)))
-	warning("diagonal has non-finite entries")
-    r <- V # keep dimnames
-    r[] <- Is * V * rep(Is, each = p)
-    ##	== D %*% V %*% D  where D = diag(Is)
-    r[cbind(1:p,1:p)] <- 1 # exact in diagonal
-    r
-}
-
 corcomp <- function(S,P) {
 ## return the correlation matrix of the components P on S
 

@@ -12,6 +12,9 @@ Things that were in ./Notes-MM and are now done
 
 	---> DONE;  used  redrawMatrix()
 
+3)  locator() "beep"ing -- use new R 1.8.0 feature options(locatorBell)
+    to turn off!
+
 4)  return(a, b, c)  should rather be  return(list(a=a, b=b, c=c))
     This is from a statement by John Chambers ("return(a,b,c) should never
     have worked").

@@ -1,9 +1,6 @@
 TODO (mostly to myself, some in German)
 =====
 
-3)  locator() "beep"ing -- use new R 1.8.0 feature options(locatorBell)
-    to turn off!
-
 2)  jetzige Print methode print.simpcomp() schreibt sehr viel
     ==> Vorschlag, dies wird "summary()",
     und ich schreibe Methode mit kürzerem Output.
@@ -34,7 +31,6 @@ TODO (mostly to myself, some in German)
    how nicely chosen sca()'s colors are there.
    The R version definitely needs better coloring!
 
-
 10) sca() & redrawMatrix() : When p (= ncol(.)) is larger,
     the R version should  use a smaller cex or tell the user to first
     enlarge the graphics window {or do both!} instead of failing.
@@ -43,3 +39,4 @@ TODO (mostly to myself, some in German)
     -------  use a different name (ending) such that R does not even source
     it? --> this would get rid of the (wrong) extraneous warnings with
     R 1.8's "R CMD check".
+      --- partly done (AFAICS even all: no warnings in R-devel-2004-08-06)

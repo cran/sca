@@ -1,3 +1,14 @@
+2004-08-06  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version): 0.8-5	for CRAN
+
+	* R/aaa.R (cov2cor): moved here; require(stats) in .First.lib
+	(.First.lib): turn off locator bell
+	* R/sca.R (cov2cor): dito. -- all this for lazy loading
+
+	* TODO: update
+	* Done-MM: "
+
 2003-10-24  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* man/corcomp.Rd: #ifdef cov2cor() items --> CMD check warning off
@@ -8,7 +19,7 @@
 
 2003-07-17  Martin Maechler  <maechler@stat.math.ethz.ch>
 
-	* DESCRIPTION (Version): 0.8-3  --> submitted to CRAN
+	* DESCRIPTION (Version): 0.8-3	--> submitted to CRAN
 
 	* TODO: cleaned up (renamed from "Notes-MM")
 	* Done-MM: new file
@@ -24,7 +35,7 @@
 
 	* man/sca.Rd:
 	* R/sca.R: change defaults for (d,b) <-> (qmin,corblocks)
-	           for the non-interactive case.
+		   for the non-interactive case.
 	   (percent()): new utility
 	   "redrawMatrix()" instead of "remakescreen()"
 	   ... others all from Valentin's "10 points" and discussion
