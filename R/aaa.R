@@ -7,7 +7,8 @@ if(!(Ex <- exists("version")) || is.null(vl <- version$language) || vl != "R")
 
     dev.interactive <- function () {
 	interactive() && exists(".Device") &&
-	.Device %in% c("motif", "X11", "openlook", "graphsheet")
+	.Device %in%
+        c("motif", "graphsheet", "java.graph", "X11", "openlook")
     }
 
     which.min <- function(x) sort.list(x)[1]

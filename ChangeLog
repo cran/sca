@@ -1,6 +1,14 @@
+2003-10-24  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* man/corcomp.Rd: #ifdef cov2cor() items --> CMD check warning off
+
+2003-07-18  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* R/aaa.R (dev.interactive): add "java.graph" (thanks to BDR)
+
 2003-07-17  Martin Maechler  <maechler@stat.math.ethz.ch>
 
-	* DESCRIPTION (Version): 0.8-3
+	* DESCRIPTION (Version): 0.8-3  --> submitted to CRAN
 
 	* TODO: cleaned up (renamed from "Notes-MM")
 	* Done-MM: new file

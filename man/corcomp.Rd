@@ -1,7 +1,9 @@
 \name{corcomp}
 \alias{corcomp}
 \alias{covcomp}
+#ifdef Rd2Sd
 \alias{cov2cor}%% << for R versions < 1.8 (and S-plus!)
+#endif
 \title{Covariance and Correlation Matrix of Components P on S}
 \description{
   \code{covcomp} returns the variance-covariance matrix of the
@@ -10,14 +12,17 @@
 \usage{
 corcomp(S, P)
 covcomp(S, P)
+#ifdef Rd2Sd
 cov2cor(V)%% << for R versions < 1.8 (and S-plus!)
+#endif
 }
 \arguments{
   \item{S}{correlation/covariance matrix of the \eqn{p} original variables.}
   \item{P}{component matrix of dimension \eqn{p \times b}{p x b}.}
-
+#ifdef Rd2Sd
   \item{V}{symmetric numeric matrix, usually positive definite such as a
     covariance matrix.}
+#endif
 }
 %-\details{
 %-  ~~ If necessary, more details than the __description__  above ~~
