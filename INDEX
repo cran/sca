@@ -1,0 +1,23 @@
+sca                     Simple Component Analysis -- Interactively
+---			-------------------------
+agglomblock             Agglomerate Two Block-Components in SCA
+allcrit                 Simple Component Quality Criterion Computation
+corcomp                 Covariance and Correlation Matrix of
+                        Components P on S
+firstpcres              First Principal Component of Residuals given Components
+maxmatrix               Largest Element in Correlation Matrix
+nextdiff                Compute the Next Simple Difference-Component for SCA
+percent			Simple Formatting of Percentages
+quickcrit               Additional Contribution of New Component to
+                        the SC System
+shrinkdiff              Shrink Component Towards a Simple
+                        Difference-Component in SCA
+simpvector              Simplify a (Principal Component) Vector to a
+                        Simple Component
+sortmatrix              Sort Simple Component Matrix
+
+	DATA SETS
+	---------
+hearlossC               Hearing Loss Correlation Data
+pitpropC                Pitprops Strength Correlation Data
+reflexesC               Human Reflexes Correlation Data

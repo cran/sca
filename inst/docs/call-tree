@@ -1,0 +1,65 @@
+					(this is for the OLD version, Dec.2002!)
+Calling tree of functions:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+sca
+ |
+ |-> groupcomp
+ |   |
+ |---+-> sortmatrix
+ |
+ |-> Qmatrix
+ |
+ |-> maxmatrix
+ |
+ |-> onemorediff
+ |   |
+ |   |-> Qmatrix(.)
+ |   |-> lsfit(.) $residuals
+ |   |-> princomp() $loadings
+ |   |
+ |   \-> simpcompdiff()
+ |       |
+ |       |-> adaptsimp
+ |       |
+ |       |-> sortmatrix
+ |       |-> Qmatrix
+ |       \-> lsfit() $residuals
+ |
+ | - - - - - - - - - - - - - -  interactive 3 phases  - - - - - - - - - - - -
+ |
+ |-> critprint (*no* printing!)
+ |   |
+ |   |-> allcrit()
+ |   |   |
+ |   |   |-> Qmatrix()
+ |   |   |-> eigen(var(X))
+ |   |   |-> lsfit(., .[,i])
+ |   |   \-> maxmatrix()
+ |   |
+ |   \-> sccrit
+ |
+ |-> remakescreen()  {plotting}
+ |
+ |-> locator()        *interactive* in plot
+ |
+ |-> eqmatrix
+ |
+ |-> groupcomp()	[see above]
+ |-> onemorediff()	[see above]
+ |	 \-> ...
+ |
+ |-> adaptsimp
+ |
+ | - - - - - - - - - - - - - - end interactive - - - - - - - - - - - - -
+ |
+ |-> print(...)
+ |
+ \-> summarycrit() --> cat() and print()
+     |
+     \-> allcrit()				[see above]
+	 \-> ...
+
+
+
+

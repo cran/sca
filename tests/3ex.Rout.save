@@ -1,0 +1,511 @@
+
+R : Copyright 2003, The R Development Core Team
+Version 1.8.0 Under development (unstable) (2003-07-15)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type `license()' or `licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type `contributors()' for more information.
+
+Type `demo()' for some demos, `help()' for on-line help, or
+`help.start()' for a HTML browser interface to help.
+Type `q()' to quit R.
+
+> library(sca)
+> data(hearlossC)
+> sc.hear <- sca(hearlossC)
+> sc.hear
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : median linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 1 
+Number of diff.-components  : 4 
+------------------------------------------------------------ 
+Simple matrix: 
+        B1 D2 D3 D4 D5
+Left5c   1  1  0  1  0
+Left1k   1  1  0  1 -2
+Left2k   1 -1 -1  1  0
+Left4k   1 -1  1  1  3
+Right5c  1  1  0 -1  3
+Right1k  1  1  0 -1 -2
+Right2k  1 -1 -1 -1  0
+Right4k  1 -1  1 -1 -2
+------------------------------------------------------------ 
+Variance principal components:
+ 49.11 % 20.23 % 12.19 % 5.83 % 4.25 % 
+Variance simple components   :
+ 48.22 % 19.85 % 12.30 % 5.75 % 4.68 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 91.62 % 
+Extracted variability SCA: 89.46 % 
+Optimality SCA           : 97.65 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1    D2    D3    D4    D5
+B1  1.00  0.12 -0.09  0.13 -0.15
+D2  0.12  1.00 -0.15  0.05 -0.10
+D3 -0.09 -0.15  1.00 -0.03  0.33
+D4  0.13  0.05 -0.03  1.00  0.02
+D5 -0.15 -0.10  0.33  0.02  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.33 ( D3 - D5 ) 
+------------------------------------------------------------ 
+> sca(hearlossC, cluster = "single")
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : single linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 1 
+Number of diff.-components  : 4 
+------------------------------------------------------------ 
+Simple matrix: 
+        B1 D2 D3 D4 D5
+Left5c   1  1  0  1  0
+Left1k   1  1  0  1 -2
+Left2k   1 -1 -1  1  0
+Left4k   1 -1  1  1  3
+Right5c  1  1  0 -1  3
+Right1k  1  1  0 -1 -2
+Right2k  1 -1 -1 -1  0
+Right4k  1 -1  1 -1 -2
+------------------------------------------------------------ 
+Variance principal components:
+ 49.11 % 20.23 % 12.19 % 5.83 % 4.25 % 
+Variance simple components   :
+ 48.22 % 19.85 % 12.30 % 5.75 % 4.68 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 91.62 % 
+Extracted variability SCA: 89.46 % 
+Optimality SCA           : 97.65 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1    D2    D3    D4    D5
+B1  1.00  0.12 -0.09  0.13 -0.15
+D2  0.12  1.00 -0.15  0.05 -0.10
+D3 -0.09 -0.15  1.00 -0.03  0.33
+D4  0.13  0.05 -0.03  1.00  0.02
+D5 -0.15 -0.10  0.33  0.02  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.33 ( D3 - D5 ) 
+------------------------------------------------------------ 
+> sca(hearlossC, qmin= 6, corblocks = 0.4)
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : median linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 2 
+Number of diff.-components  : 4 
+------------------------------------------------------------ 
+Simple matrix: 
+        B1 B2 D3 D4 D5 D6
+Left5c   1  0  1  1  0  0
+Left1k   1  0  1  1 -1  0
+Left2k   1  0 -2  1  0  0
+Left4k   0  1  0  0  0 -1
+Right5c  1  0  1 -1  2  0
+Right1k  1  0  1 -1 -1  0
+Right2k  1  0 -2 -1  0  0
+Right4k  0  1  0  0  0  1
+------------------------------------------------------------ 
+Variance principal components:
+ 49.11 % 20.23 % 12.19 % 5.83 % 4.25 % 3.95 % 
+Variance simple components   :
+ 43.88 % 21.37 % 15.12 % 5.72 % 5.32 % 3.63 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 95.57 % 
+Extracted variability SCA: 89.26 % 
+Optimality SCA           : 93.40 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1    B2    D3    D4    D5    D6
+B1  1.00  0.38  0.14  0.13 -0.16 -0.07
+B2  0.38  1.00 -0.16  0.07 -0.12  0.00
+D3  0.14 -0.16  1.00  0.02  0.28 -0.04
+D4  0.13  0.07  0.02  1.00 -0.41 -0.14
+D5 -0.16 -0.12  0.28 -0.41  1.00  0.01
+D6 -0.07  0.00 -0.04 -0.14  0.01  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.41 ( D4 - D5 ) 
+------------------------------------------------------------ 
+> 
+> data(reflexesC)
+> sc.refl <- sca(reflexesC)
+> sc.refl
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : median linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 1 
+Number of diff.-components  : 4 
+------------------------------------------------------------ 
+Simple matrix: 
+          B1 D2 D3 D4 D5
+triceps.R  1  2  0  1  1
+triceps.L  1  2  0  1  1
+biceps.R   1  2  0  0 -2
+biceps.L   1  2  0  0 -2
+wrist.R    1  2  0 -1  1
+wrist.L    1  2  0 -1  1
+knee.R     1 -3 -1  0  0
+knee.L     1 -3 -1  0  0
+ankle.R    1 -3  1  0  0
+ankle.L    1 -3  1  0  0
+------------------------------------------------------------ 
+Variance principal components:
+ 52.23 % 20.36 % 10.94 % 8.57 % 4.96 % 
+Variance simple components   :
+ 50.76 % 20.64 % 11.20 % 8.55 % 5.55 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 97.05 % 
+Extracted variability SCA: 95.06 % 
+Optimality SCA           : 97.95 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1    D2    D3    D4    D5
+B1  1.00  0.17 -0.14  0.03 -0.10
+D2  0.17  1.00 -0.19 -0.03  0.13
+D3 -0.14 -0.19  1.00  0.02  0.21
+D4  0.03 -0.03  0.02  1.00 -0.05
+D5 -0.10  0.13  0.21 -0.05  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.21 ( D3 - D5 ) 
+------------------------------------------------------------ 
+> sca(reflexesC, cluster = "complete")
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : complete linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 1 
+Number of diff.-components  : 4 
+------------------------------------------------------------ 
+Simple matrix: 
+          B1 D2 D3 D4 D5
+triceps.R  1  2  0  1  1
+triceps.L  1  2  0  1  1
+biceps.R   1  2  0  0 -2
+biceps.L   1  2  0  0 -2
+wrist.R    1  2  0 -1  1
+wrist.L    1  2  0 -1  1
+knee.R     1 -3 -1  0  0
+knee.L     1 -3 -1  0  0
+ankle.R    1 -3  1  0  0
+ankle.L    1 -3  1  0  0
+------------------------------------------------------------ 
+Variance principal components:
+ 52.23 % 20.36 % 10.94 % 8.57 % 4.96 % 
+Variance simple components   :
+ 50.76 % 20.64 % 11.20 % 8.55 % 5.55 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 97.05 % 
+Extracted variability SCA: 95.06 % 
+Optimality SCA           : 97.95 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1    D2    D3    D4    D5
+B1  1.00  0.17 -0.14  0.03 -0.10
+D2  0.17  1.00 -0.19 -0.03  0.13
+D3 -0.14 -0.19  1.00  0.02  0.21
+D4  0.03 -0.03  0.02  1.00 -0.05
+D5 -0.10  0.13  0.21 -0.05  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.21 ( D3 - D5 ) 
+------------------------------------------------------------ 
+> sca(reflexesC, qmin = 4, b = 3, corblocks = 0, cluster = "single")
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : single linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 3 
+Number of diff.-components  : 1 
+------------------------------------------------------------ 
+Simple matrix: 
+          B1 B2 B3 D4
+triceps.R  1  0  0  1
+triceps.L  1  0  0  1
+biceps.R   1  0  0  0
+biceps.L   1  0  0  0
+wrist.R    1  0  0 -1
+wrist.L    1  0  0 -1
+knee.R     0  0  1  0
+knee.L     0  0  1  0
+ankle.R    0  1  0  0
+ankle.L    0  1  0  0
+------------------------------------------------------------ 
+Variance principal components:
+ 52.23 % 20.36 % 10.94 % 8.57 % 
+Variance simple components   :
+ 44.20 % 19.40 % 19.00 % 8.55 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 92.10 % 
+Extracted variability SCA: 84.46 % 
+Optimality SCA           : 91.71 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+     B1   B2   B3   D4
+B1 1.00 0.22 0.44 0.02
+B2 0.22 1.00 0.42 0.05
+B3 0.44 0.42 1.00 0.03
+D4 0.02 0.05 0.03 1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.44 ( B1 - B3 ) 
+------------------------------------------------------------ 
+> sca(reflexesC, qmin = 4)
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : median linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 1 
+Number of diff.-components  : 3 
+------------------------------------------------------------ 
+Simple matrix: 
+          B1 D2 D3 D4
+triceps.R  1  2  0  1
+triceps.L  1  2  0  1
+biceps.R   1  2  0  0
+biceps.L   1  2  0  0
+wrist.R    1  2  0 -1
+wrist.L    1  2  0 -1
+knee.R     1 -3 -1  0
+knee.L     1 -3 -1  0
+ankle.R    1 -3  1  0
+ankle.L    1 -3  1  0
+------------------------------------------------------------ 
+Variance principal components:
+ 52.23 % 20.36 % 10.94 % 8.57 % 
+Variance simple components   :
+ 50.76 % 20.64 % 11.20 % 8.55 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 92.10 % 
+Extracted variability SCA: 89.97 % 
+Optimality SCA           : 97.69 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1    D2    D3    D4
+B1  1.00  0.17 -0.14  0.03
+D2  0.17  1.00 -0.19 -0.03
+D3 -0.14 -0.19  1.00  0.02
+D4  0.03 -0.03  0.02  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.19 ( D2 - D3 ) 
+------------------------------------------------------------ 
+> 
+> data(pitpropC)
+> sc.pitp <- sca(pitpropC)
+> sc.pitp
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : median linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 6 
+Number of diff.-components  : 0 
+------------------------------------------------------------ 
+Simple matrix: 
+        B1 B2 B3 B4 B5 B6
+topdiam  1  0  0  0  0  0
+length   1  0  0  0  0  0
+moist    0  1  0  0  0  0
+testsg   0  1  0  0  0  0
+ovensg   0  0  1  0  0  0
+ringtop  1  0  0  0  0  0
+ringbut  1  0  0  0  0  0
+bowmax   1  0  0  0  0  0
+bowdist  1  0  0  0  0  0
+whorls   1  0  0  0  0  0
+clear    0  0  0  1  0  0
+knots    0  0  0  0  1  0
+diaknot  0  0  0  0  0  1
+------------------------------------------------------------ 
+Variance principal components:
+ 32.45 % 18.29 % 14.45 % 8.53 % 7.00 % 6.27 % 
+Variance simple components   :
+ 30.16 % 14.48 % 7.69 % 7.69 % 7.69 % 7.69 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 87.00 % 
+Extracted variability SCA: 72.82 % 
+Optimality SCA           : 83.70 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1   B2    B3    B4    B5    B6
+B1  1.00 0.20  0.08 -0.03 -0.21 -0.20
+B2  0.20 1.00  0.04  0.13  0.20  0.07
+B3  0.08 0.04  1.00 -0.09 -0.14 -0.21
+B4 -0.03 0.13 -0.09  1.00  0.03  0.01
+B5 -0.21 0.20 -0.14  0.03  1.00  0.18
+B6 -0.20 0.07 -0.21  0.01  0.18  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.21 ( B1 - B5 ) 
+------------------------------------------------------------ 
+> 
+> sca(pitpropC, cluster = "single")
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : single linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 6 
+Number of diff.-components  : 0 
+------------------------------------------------------------ 
+Simple matrix: 
+        B1 B2 B3 B4 B5 B6
+topdiam  1  0  0  0  0  0
+length   1  0  0  0  0  0
+moist    0  1  0  0  0  0
+testsg   0  1  0  0  0  0
+ovensg   0  0  1  0  0  0
+ringtop  1  0  0  0  0  0
+ringbut  1  0  0  0  0  0
+bowmax   1  0  0  0  0  0
+bowdist  1  0  0  0  0  0
+whorls   1  0  0  0  0  0
+clear    0  0  0  1  0  0
+knots    0  0  0  0  1  0
+diaknot  0  0  0  0  0  1
+------------------------------------------------------------ 
+Variance principal components:
+ 32.45 % 18.29 % 14.45 % 8.53 % 7.00 % 6.27 % 
+Variance simple components   :
+ 30.16 % 14.48 % 7.69 % 7.69 % 7.69 % 7.69 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 87.00 % 
+Extracted variability SCA: 72.82 % 
+Optimality SCA           : 83.70 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1   B2    B3    B4    B5    B6
+B1  1.00 0.20  0.08 -0.03 -0.21 -0.20
+B2  0.20 1.00  0.04  0.13  0.20  0.07
+B3  0.08 0.04  1.00 -0.09 -0.14 -0.21
+B4 -0.03 0.13 -0.09  1.00  0.03  0.01
+B5 -0.21 0.20 -0.14  0.03  1.00  0.18
+B6 -0.20 0.07 -0.21  0.01  0.18  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.21 ( B1 - B5 ) 
+------------------------------------------------------------ 
+> sca(pitpropC,        d = 3, qmin= 0)
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : median linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 6 
+Number of diff.-components  : 3 
+------------------------------------------------------------ 
+Simple matrix: 
+        B1 B2 B3 B4 B5 B6 D7 D8 D9
+topdiam  1  0  0  0  0  0  0  0  4
+length   1  0  0  0  0  0  0  0  4
+moist    0  1  0  0  0  0  0  0  0
+testsg   0  1  0  0  0  0  0  0  0
+ovensg   0  0  1  0  0  0  0  0  0
+ringtop  1  0  0  0  0  0 -1  0 -3
+ringbut  1  0  0  0  0  0 -1  0 -3
+bowmax   1  0  0  0  0  0  1 -1 -3
+bowdist  1  0  0  0  0  0  1  1 -3
+whorls   1  0  0  0  0  0  0  0  4
+clear    0  0  0  1  0  0  0  0  0
+knots    0  0  0  0  1  0  0  0  0
+diaknot  0  0  0  0  0  1  0  0  0
+------------------------------------------------------------ 
+Variance principal components:
+ 32.45 % 18.29 % 14.45 % 8.53 % 7.00 % 6.27 % 4.43 % 3.38 % 2.71 % 
+Variance simple components   :
+ 30.16 % 14.48 % 7.69 % 7.69 % 7.69 % 7.69 % 8.30 % 3.98 % 5.19 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 97.53 % 
+Extracted variability SCA: 86.19 % 
+Optimality SCA           : 88.37 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1    B2    B3    B4    B5    B6    D7    D8    D9
+B1  1.00  0.20  0.08 -0.03 -0.21 -0.20  0.00  0.11  0.19
+B2  0.20  1.00  0.04  0.13  0.20  0.07 -0.13  0.19  0.16
+B3  0.08  0.04  1.00 -0.09 -0.14 -0.21 -0.33 -0.04 -0.36
+B4 -0.03  0.13 -0.09  1.00  0.03  0.01  0.14  0.02 -0.08
+B5 -0.21  0.20 -0.14  0.03  1.00  0.18 -0.13  0.23  0.05
+B6 -0.20  0.07 -0.21  0.01  0.18  1.00  0.23  0.12  0.40
+D7  0.00 -0.13 -0.33  0.14 -0.13  0.23  1.00 -0.10  0.28
+D8  0.11  0.19 -0.04  0.02  0.23  0.12 -0.10  1.00  0.11
+D9  0.19  0.16 -0.36 -0.08  0.05  0.40  0.28  0.11  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.4 ( B6 - D9 ) 
+------------------------------------------------------------ 
+> sca(pitpropC, b = 1, d = 3, qmin= 0, corblocks=0)
+------------------------------------------------------------ 
+Simple Component Analysis 
+------------------------------------------------------------ 
+Optimality criterion        : corrected sum of variances 
+Clustering procedure        : median linkage 
+Within-block differences    : TRUE 
+Possible invertion of signs : FALSE 
+Number of block-components  : 1 
+Number of diff.-components  : 3 
+------------------------------------------------------------ 
+Simple matrix: 
+        B1 D2 D3 D4
+topdiam  1  0  2  1
+length   1  0  2  1
+moist    1 -4  0  1
+testsg   1 -4 -3  0
+ovensg   1  0 -3 -2
+ringtop  1  0 -3  0
+ringbut  1  5 -3  0
+bowmax   1  5  2 -2
+bowdist  1  5  2  0
+whorls   1  5  0  1
+clear    1 -4  2 -2
+knots    1 -4  0  1
+diaknot  1 -4  2  1
+------------------------------------------------------------ 
+Variance principal components:
+ 32.45 % 18.29 % 14.45 % 8.53 % 
+Variance simple components   :
+ 21.72 % 20.56 % 13.62 % 9.75 % 
+------------------------------------------------------------ 
+Extracted variability PCA: 73.73 % 
+Extracted variability SCA: 62.08 % 
+Optimality SCA           : 84.20 % 
+------------------------------------------------------------ 
+Correlations simple components: 
+      B1    D2    D3    D4
+B1  1.00  0.28 -0.01  0.24
+D2  0.28  1.00 -0.01 -0.20
+D3 -0.01 -0.01  1.00  0.26
+D4  0.24 -0.20  0.26  1.00
+------------------------------------------------------------ 
+Max (abs) correlation: 0.28 ( B1 - D2 ) 
+------------------------------------------------------------ 
+> 
+> 
+> 

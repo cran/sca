@@ -1,0 +1,73 @@
+Things that were in ./Notes-MM and are now done
+------------------------------------------------
+
+1)  inter = FALSE  als Default
+     -- call it `interactive' (can still abbreviate)
+    actually now have  `dev.interactive()' which is nice, but not S+
+    ==> need S+ version of dev.interactive()
+	--> DONE
+
+2b) `remakescreen' is not such a great name.
+    I'd prefer  `redrawscreen' or even rather  `redrawSC'
+
+	---> DONE;  used  redrawMatrix()
+
+4)  return(a, b, c)  should rather be  return(list(a=a, b=b, c=c))
+    This is from a statement by John Chambers ("return(a,b,c) should never
+    have worked").
+			--> DONE
+
+
+7) MM: I found that the sign of diff-components is effectively random,
+   depending on the exact numerics used in firstpcres() and hence eigen(),
+   effectively. This can now give different results (diff.components
+   multiplied by +/- 1) in different versions of S-PLUS or R, possibly even
+   same versions on different floating point architecture (e.g. Intel-Linux
+   vs Sun SPARC) or even difference only because of different compiler
+   (optimizations) used for the underlying eigen decomposition routine.
+
+   I propose to make diff.components unique, by, e.g. fixing the sign of
+   the first (or last) non-zero entry to always be positive.
+   Alternatively, one might ensure that correlations to previous components
+   should be rather positive than negative (or vice versa).
+
+   Leaving the diff.comp only determinated up to multiplication by +/- 1
+   seems unsatisfactory to me.
+
+
+    ---> DONE: we set the first non-0 entry of "zcomp" (before "shrinking")
+	       to positive.
+
+
+------------------------------------- older ------------------------
+
+Comments by Martin Mächler
+13.12.2002:
+
+1) I indented things using Emacs and ESS (Emacs Speaks Statistics)
+
+14.12.2002:
+
+2) The author (Valentin ?) uses 1 and 0 everywhere,
+   where TRUE/FALSE should be used. This leads to superfluous code such as
+   a)
+      result <- 1* ( <logical expression> )
+   or
+   b)
+      if (a == 1)    would be just  if(a)
+      if (a == 0)    would be just  if(!a)
+
+3) Computation, Printing and Plotting are all intertwined;
+   this may be useful at beginning but is not flexible enough.
+   These three things should be in  separate functions, where one can still
+   have a `global' interactive function that calls the separate steps.
+
+4) groupcomp() clearly only needs cor(X)
+   I wonder if one couldn't work with an input cor.matrix !!
+   ==> more flexibility
+
+5) sca( "cor = 0/1" ) -- In S (S-plus and R), there's the function
+   scale() which you should use here.  scale() has arguments
+   center = T/F and scale = T/F.
+   For consistency, you should use  scale = TRUE  here instead of "cor = 1"
+

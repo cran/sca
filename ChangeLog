@@ -1,0 +1,37 @@
+2003-07-17  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version): 0.8-3
+
+	* TODO: cleaned up (renamed from "Notes-MM")
+	* Done-MM: new file
+
+	* man/sca.Rd: examples adapted to new default (for inter=FALSE)
+	* R/sca.R: small changes; fix percent(1,2) for R
+
+	* tests/*.Rout.save : new (were not ok in 0.8-2 either)
+
+2003-07-16  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version): 0.8-2
+
+	* man/sca.Rd:
+	* R/sca.R: change defaults for (d,b) <-> (qmin,corblocks)
+	           for the non-interactive case.
+	   (percent()): new utility
+	   "redrawMatrix()" instead of "remakescreen()"
+	   ... others all from Valentin's "10 points" and discussion
+	* R/sca.R (nextdiff): sign-unique difference component
+	* R/sca.R (sortmatrix): sort.list(-d[]) instead of rev(order(d[]))
+
+	* R/aaa.R (%in%): needed for Splus <= 5
+
+
+2003-07-09  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* R/sca.R: small further cleanup, e.g. unlist(locator(1));
+		dev.interactive() for S-plus : fixed and moved to new file
+	* R/aaa.R: which also defines which.min() for S+
+
+	* DESCRIPTION (Version): 0.8-1
+
+
