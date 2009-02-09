@@ -39,6 +39,6 @@ allcrit(S, P, criterion, sortP = TRUE)
 \author{Valentin Rousson \email{rousson@ifspm.unizh.ch} and
   Martin Maechler \email{maechler@stat.math.ethz.ch}.}
 \seealso{\code{\link{quickcrit}}, \code{\link{sca}}, also for references.}
-\examples{
-}
+% \examples{
+% }
 \keyword{multivariate}

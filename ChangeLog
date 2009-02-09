@@ -1,3 +1,11 @@
+2009-02-09  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version, Date): 0.8-6
+
+	* man/sortmatrix.Rd: et al: comment empty \examples{..}
+
+	* man/sca.Rd: use \method{print}{simpcomp}
+
 2004-08-06  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* DESCRIPTION (Version): 0.8-5	for CRAN

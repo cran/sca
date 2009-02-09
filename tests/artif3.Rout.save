@@ -1,17 +1,19 @@
 
-R : Copyright 2003, The R Development Core Team
-Version 1.8.0 Under development (unstable) (2003-07-15)
+R version 2.8.1 Patched (2009-02-08 r47879)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
-Type `license()' or `licence()' for distribution details.
+Type 'license()' or 'licence()' for distribution details.
 
 R is a collaborative project with many contributors.
-Type `contributors()' for more information.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
 
-Type `demo()' for some demos, `help()' for on-line help, or
-`help.start()' for a HTML browser interface to help.
-Type `q()' to quit R.
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
 
 > #### Artificial example with 3 or 4 true components :
 > library(sca)
@@ -152,7 +154,7 @@ Max (abs) correlation: 0.17 ( D2 - D4 )
  [8,]           + + 1 +
  [9,]           , + + 1
 attr(,"legend")
-[1] 0 ` ' 0.3 `.' 0.6 `,' 0.8 `+' 0.9 `*' 0.95 `B' 1
+[1] 0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘B’ 1
 > sc3b <- sca(cor(m3b))
 > sc3b
 ------------------------------------------------------------ 
@@ -252,13 +254,13 @@ List of 10
   .. ..$ : chr [1:9] "V1" "V2" "V3" "V4" ...
   .. ..$ : chr [1:5] "B1" "B2" "B3" "D4" ...
  $ allcrit    :List of 7
-  ..$ varpc : num [1:5] 0.3867 0.2859 0.2013 0.0326 0.0260
-  ..$ varsc : Named num [1:5] 0.3791 0.2815 0.2069 0.0290 0.0262
+  ..$ varpc : num [1:5] 0.3867 0.2859 0.2013 0.0326 0.026
+  ..$ varsc : Named num [1:5] 0.3791 0.2815 0.2069 0.029 0.0262
   .. ..- attr(*, "names")= chr [1:5] "B1" "B2" "B3" "D4" ...
   ..$ cumpc : num 0.932
   ..$ cumsc : num 0.916
   ..$ opt   : num 0.982
-  ..$ corsc : num [1:5, 1:5] 1.00000 0.04578 0.08229 0.00156 0.09325 ...
+  ..$ corsc : num [1:5, 1:5] 1 0.04578 0.08229 0.00156 0.09325 ...
   .. ..- attr(*, "dimnames")=List of 2
   .. .. ..$ : chr [1:5] "B1" "B2" "B3" "D4" ...
   .. .. ..$ : chr [1:5] "B1" "B2" "B3" "D4" ...
@@ -272,7 +274,7 @@ List of 10
  $ cluster    : chr "median"
  $ withinblock: logi TRUE
  $ invertsigns: logi FALSE
- $ vardata    : num [1:9, 1:9] 1.0000 0.7694 0.7638 0.0761 0.0515 ...
+ $ vardata    : num [1:9, 1:9] 1 0.7694 0.7638 0.0761 0.0515 ...
   ..- attr(*, "dimnames")=List of 2
   .. ..$ : chr [1:9] "V1" "V2" "V3" "V4" ...
   .. ..$ : chr [1:9] "V1" "V2" "V3" "V4" ...
@@ -310,17 +312,17 @@ List of 10
 [19,]                                     1 *                    
 [20,]                                     * 1                    
 [21,]                                         1 + + + + + + + + +
-[22,]                                         + 1 + , + + + , + ,
-[23,]                                         + + 1 + + + + , + +
-[24,]                                         + , + 1 + + + , + +
-[25,]                                         + + + + 1 + + , + +
-[26,]                                         + + + + + 1 + + + +
-[27,]                                         + + + + + + 1 + + +
-[28,]                                         + , , , , + + 1 , +
+[22,]                                         + 1 + + + + , , + +
+[23,]                                         + + 1 , + + + , + +
+[24,]                                         + + , 1 , + , , + ,
+[25,]                                         + + + , 1 + , , + +
+[26,]                                         + + + + + 1 + , + +
+[27,]                                         + , + , , + 1 , + +
+[28,]                                         + , , , , , , 1 , +
 [29,]                                         + + + + + + + , 1 +
-[30,]                                         + , + + + + + + + 1
+[30,]                                         + + + , + + + + + 1
 attr(,"legend")
-[1] 0 ` ' 0.3 `.' 0.6 `,' 0.8 `+' 0.9 `*' 0.95 `B' 1
+[1] 0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘B’ 1
 > sc4b <- sca(C4)
 > sc4b
 ------------------------------------------------------------ 
@@ -367,12 +369,12 @@ V29  0  1  0  0  0
 V30  0  1  0  0  0
 ------------------------------------------------------------ 
 Variance principal components:
- 30.05 % 27.58 % 18.22 % 6.38 % 1.19 % 
+ 30.04 % 27.58 % 18.22 % 6.38 % 1.19 % 
 Variance simple components   :
  29.87 % 27.60 % 18.29 % 6.35 % 1.14 % 
 ------------------------------------------------------------ 
-Extracted variability PCA: 83.42 % 
-Extracted variability SCA: 83.20 % 
+Extracted variability PCA: 83.41 % 
+Extracted variability SCA: 83.19 % 
 Optimality SCA           : 99.74 % 
 ------------------------------------------------------------ 
 Correlations simple components: 
@@ -433,12 +435,12 @@ V29  0  1  0  0  0
 V30  0  1  0  0  0
 ------------------------------------------------------------ 
 Variance principal components:
- 30.05 % 27.58 % 18.22 % 6.38 % 1.19 % 
+ 30.04 % 27.58 % 18.22 % 6.38 % 1.19 % 
 Variance simple components   :
  29.87 % 27.60 % 18.29 % 6.35 % 1.14 % 
 ------------------------------------------------------------ 
-Extracted variability PCA: 83.42 % 
-Extracted variability SCA: 83.20 % 
+Extracted variability PCA: 83.41 % 
+Extracted variability SCA: 83.19 % 
 Optimality SCA           : 99.74 % 
 ------------------------------------------------------------ 
 Correlations simple components: 
@@ -462,13 +464,13 @@ List of 10
   .. ..$ : chr [1:30] "V1" "V2" "V3" "V4" ...
   .. ..$ : chr [1:5] "B1" "B2" "B3" "B4" ...
  $ allcrit    :List of 7
-  ..$ varpc : num [1:5] 0.3005 0.2758 0.1822 0.0638 0.0119
-  ..$ varsc : Named num [1:5] 0.2987 0.2760 0.1829 0.0635 0.0114
+  ..$ varpc : num [1:5] 0.3004 0.2758 0.1822 0.0638 0.0119
+  ..$ varsc : Named num [1:5] 0.2987 0.276 0.1829 0.0635 0.0114
   .. ..- attr(*, "names")= chr [1:5] "B1" "B2" "B3" "B4" ...
   ..$ cumpc : num 0.834
   ..$ cumsc : num 0.832
   ..$ opt   : num 0.997
-  ..$ corsc : num [1:5, 1:5]  1.00000 -0.01241 -0.04419 -0.00432  0.01471 ...
+  ..$ corsc : num [1:5, 1:5] 1 -0.01233 -0.04419 -0.00432 0.01471 ...
   .. ..- attr(*, "dimnames")=List of 2
   .. .. ..$ : chr [1:5] "B1" "B2" "B3" "B4" ...
   .. .. ..$ : chr [1:5] "B1" "B2" "B3" "B4" ...
@@ -482,12 +484,12 @@ List of 10
  $ cluster    : chr "median"
  $ withinblock: logi TRUE
  $ invertsigns: logi FALSE
- $ vardata    : num [1:30, 1:30] 1.000 0.729 0.714 0.707 0.713 ...
+ $ vardata    : num [1:30, 1:30] 1 0.729 0.714 0.707 0.713 ...
   ..- attr(*, "dimnames")=List of 2
   .. ..$ : chr [1:30] "V1" "V2" "V3" "V4" ...
   .. ..$ : chr [1:30] "V1" "V2" "V3" "V4" ...
  - attr(*, "class")= chr "simpcomp"
 > 
 > cat('Time elapsed: ',proc.time() - .proctime00,'\n')
-Time elapsed:  3.64 0.16 4.02 0 0 
+Time elapsed:  1.494 0.012 1.509 0 0 
 > 

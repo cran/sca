@@ -13,7 +13,7 @@ sca(S, b = if(interactive) 5, d = 0, qmin = if(interactive) 0 else 5,
     criterion = c("csv", "blp"), cluster = c("median","single","complete"),
     withinblock = TRUE, invertsigns = FALSE,
     interactive = dev.interactive())
-print.simpcomp(x, ndec = 2, \dots)
+\method{print}{simpcomp}(x, ndec = 2, \dots)
 }
 \arguments{
   \item{S}{the correlation (or variance-covariance) matrix to be analyzed.}

@@ -17,6 +17,6 @@ firstpcres(S, P)
   \eqn{S - A' (A P)^{-1} A}{S - A' (A P)^(-1) A} where \eqn{A := P' S}.
 }
 \seealso{\code{\link{sca}}, also for references}
-\examples{
-}
+% \examples{
+% }
 \keyword{multivariate}

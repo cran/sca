@@ -34,6 +34,6 @@ nextdiff(S, P, withinblock, criterion)
 \author{Valentin Rousson \email{rousson@ifspm.unizh.ch} and
   Martin Maechler \email{maechler@stat.math.ethz.ch}.}
 \seealso{\code{\link{shrinkdiff}}; \code{\link{sca}}, also for references}
-\examples{
-}
+% \examples{
+% }
 \keyword{multivariate}

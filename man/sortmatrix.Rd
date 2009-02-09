@@ -17,6 +17,6 @@ sortmatrix(S, P)
   numeric matrix which is just \code{P} with columns reordered.
 }
 \seealso{\code{\link{sca}}, also for references}
-\examples{
-}
+% \examples{
+% }
 \keyword{multivariate}

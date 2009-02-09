@@ -21,6 +21,6 @@ quickcrit(newcomp, S, P, criterion)
 }
 \seealso{\code{\link{sccrit}}; further \code{\link{sca}}, also for
   references.}
-\examples{
-}
+% \examples{
+% }
 \keyword{multivariate}

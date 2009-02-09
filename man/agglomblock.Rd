@@ -18,6 +18,6 @@ agglomblock(S, P, cluster = c("median","single","complete"))
   New component matrix with one block component less.
 }
 \seealso{\code{\link{sca}}, also for references}
-\examples{
-}
+% \examples{
+% }
 \keyword{multivariate}
