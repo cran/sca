@@ -45,7 +45,7 @@ sca(S, b = if(interactive) 5, d = 0, qmin = if(interactive) 0 else 5,
     without any intervention of the user (according to \code{b} or
     \code{corblocks}, and to \code{d} or \code{qmin}).
 
-    By default, \code{interactive = \code{\link{dev.interactive}}()} (which is
+    By default, \code{interactive = \link{dev.interactive}()} (which is
     true if \code{\link{interactive}()} and \code{\link{.Device}} is an
     interactive graphics device).}
 
@@ -200,7 +200,7 @@ sca(S, b = if(interactive) 5, d = 0, qmin = if(interactive) 0 else 5,
 }
 \author{Valentin Rousson \email{rousson@ifspm.unizh.ch} and
   Martin Maechler \email{maechler@stat.math.ethz.ch}.}
-\seealso{\code{\link[mva]{pca}} etc.}
+\seealso{\code{\link{prcomp}} (for PCA), etc.}
 \examples{
 data(pitpropC)
 sc.pitp <- sca(pitpropC, interactive=FALSE)

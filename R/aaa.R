@@ -22,7 +22,7 @@ if(!exists("version") || is.null(vl <- version$language) || vl != "R")
 if(exists("version")) rm(vl)
 
 ##----------------------------------------------------------------------------
-if(!exists("cov2cor", mode = "function"))## is in R 1.8.0 and later
+if(!exists("cov2cor", mode = "function"))## for S+ ; is in R 1.8.0 and later
 cov2cor <- function(V)
 {
     ## Purpose: Covariance matrix |--> Correlation matrix -- efficiently

@@ -1,3 +1,9 @@
+2009-11-17  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version, Date, Depends): 0.8-7, *, stats
+
+	* man/sca.Rd: fix typo (\code{ ..\code{.} ..}), and "PCA" link
+
 2009-02-09  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* DESCRIPTION (Version, Date): 0.8-6
