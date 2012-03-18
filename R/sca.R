@@ -898,6 +898,7 @@ percent <-  {
       function(p, d = 0, sep=" ")
           paste(format(round(100 * p, d), nsmall= d), "%", sep = sep)
 }
+
 print.simpcomp <- function(x, ndec = 2, ...) {
 
   ## print method for the result list of the sca() function above

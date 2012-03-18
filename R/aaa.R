@@ -1,5 +1,4 @@
-.First.lib <- function(lib, pkg) {
-    stopifnot(require(stats))
+.onAttach <- function(libname, pkgname){
     options(locatorBell = FALSE)# no effect for R versions prior to 1.8.0
     ##FIXME(?): should we warn when changing a global option
 }

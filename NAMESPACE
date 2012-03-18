@@ -1,0 +1,9 @@
+export("agglomblock", "allcrit", "corcomp", "covcomp",
+       "eqmatrix",
+       "firstpcres", "isblockempty", "isdiffcomp", "iswithinblock",
+       "maxmatrix", "nextdiff", "normmatrix", "percent",
+       "quickcrit", "redrawMatrix", "sca", "sccrit",
+       "shrinkdiff", "simpvector",
+       "sortmatrix")
+
+S3method(print, simpcomp)
