@@ -1,3 +1,11 @@
+2012-08-31  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version): 0.8-9; test outputs changed, because
+	MASS:mvrnorm() now uses eigen(*, EISPACK=FALSE)
+	(Description): a bit more specific.
+
+	* man/sca.Rd: add publication details of main reference.
+
 2009-11-17  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* DESCRIPTION (Version, Date, Depends): 0.8-7, *, stats

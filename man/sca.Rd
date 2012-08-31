@@ -186,12 +186,15 @@ sca(S, b = if(interactive) 5, d = 0, qmin = if(interactive) 0 else 5,
     correlations.}
 }
 \references{
-  Rousson, V. and Gasser, Th. (2003)
-  Simple Component Analysis. Submitted.
+  Rousson, Valentin and Gasser, Theo (2004)
+  Simple Component Analysis. 
+  \emph{JRSS: Series C (Applied Statistics)} \bold{53}(4), 539--555;
+  DOI: 10.1111/j.1467-9876.2004.05359.x
 
   Rousson, V. and Gasser, Th. (2003)
   \emph{Some Case Studies of Simple Component Analysis}.
-  Manuscript.
+  Manuscript, available as
+  \url{http://www.biostat.uzh.ch/research/manuscripts/scacases.pdf}
 
   Gervini, D. and Rousson, V. (2003)
   \emph{Some Proposals for Evaluating Systems of Components in Dimension
