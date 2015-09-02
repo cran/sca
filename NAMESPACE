@@ -1,3 +1,7 @@
+importFrom("grDevices", dev.interactive)
+importFrom("graphics", locator, par, plot, text, title)
+importFrom("stats", cov2cor, median)
+
 export("agglomblock", "allcrit", "corcomp", "covcomp",
        "eqmatrix",
        "firstpcres", "isblockempty", "isdiffcomp", "iswithinblock",

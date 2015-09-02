@@ -1,16 +1,17 @@
 Package: sca
 Title: Simple Component Analysis
-Version: 0.8-9
-Date: 2012-08-31
+Version: 0.9-0
+Date: 2015-09-01
 Description: Simple Component Analysis (SCA) often provides much more
-        interpretable components than Principal Components (PCA) while
-        still representing much of the variability in the data.
+   interpretable components than Principal Components (PCA) while still
+   representing much of the variability in the data.
 Author: Valentin Rousson <rousson@ifspm.unizh.ch> and Martin Maechler
 Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
-Depends: stats
+Imports: grDevices, graphics, stats
 Suggests: MASS
 BuildResaveData: no
 License: GPL (>= 2)
-Packaged: 2012-08-31 19:10:35 UTC; maechler
+NeedsCompilation: no
+Packaged: 2015-08-31 20:32:32 UTC; maechler
 Repository: CRAN
-Date/Publication: 2012-09-01 05:55:55
+Date/Publication: 2015-09-02 17:04:28
