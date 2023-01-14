@@ -11,7 +11,7 @@
 }
 \usage{data(reflexesC)}
 \format{
-  It's a \eqn{10 x 10} correlation matrix, i.e. symmetric, and
+  It is a \eqn{10 x 10} correlation matrix, i.e. symmetric, and
   diagonal \code{1}.
   The five pairs of variables are (in this order)
   \code{"triceps.R", "triceps.L", "biceps.R", "biceps.L",
@@ -26,5 +26,6 @@
 \examples{
 data(reflexesC)
 symnum(reflexesC)
+sca(reflexesC)  # sca gets 97.95\%  of PCA
 }
 \keyword{datasets}

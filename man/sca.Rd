@@ -143,9 +143,10 @@ sca(S, b = if(interactive) 5, d = 0, qmin = if(interactive) 0 else 5,
   \item{simplemat}{an integer matrix defining a system of simple
     components.  The rows correspond to variables and the columns correspond to
     components.}
-  \item{loadings}{loadings of simple components.  This is a normalized
-    (by \code{\link{normmatrix}}) version of \code{simplemat}.}
-  \item{allcrit}{a list containing the following components:
+  \item{loadings}{loadings of simple components.  This is a
+    version of \code{simplemat}, normalized by a version of
+    \code{\link{scale}}.}% our normmatrix(); FIXME --> scale() ?
+  \item{allcrit}{a \code{\link{list}} containing the following components:
     \describe{
       \item{varpc}{a vector containing the percentage of total
 	variability accounted by each of the the first \code{nblock + ndiff}
@@ -185,16 +186,28 @@ sca(S, b = if(interactive) 5, d = 0, qmin = if(interactive) 0 else 5,
     except if it has been transformed in order to avoid negative
     correlations.}
 }
+\note{
+  PCA already is known to be \dQuote{non-unique} in the sense that the
+  principal directions (eigen vectors, \code{\link{eigen}}) are only
+  determined up to a factor \eqn{\pm 1}{+/- 1}, i.e., sign change.
+
+  Consequently results may change depending e.g., only on the Lapack / BLAS
+  library used.
+  % and accelerated BLAS/Lapack versions typically differ from slower but
+  % more accurate ones.
+  This is even more the case for SCA, notably in artificial situations
+  such as the \file{tests/artif3.R} in the sources of \CRANpkg{sca}.
+}
 \references{
   Rousson, Valentin and Gasser, Theo (2004)
-  Simple Component Analysis. 
+  Simple Component Analysis.
   \emph{JRSS: Series C (Applied Statistics)} \bold{53}(4), 539--555;
-  DOI: 10.1111/j.1467-9876.2004.05359.x
+  \doi{10.1111/j.1467-9876.2004.05359.x}
 
   Rousson, V. and Gasser, Th. (2003)
   \emph{Some Case Studies of Simple Component Analysis}.
-  Manuscript, available as
-  \url{http://www.biostat.uzh.ch/research/manuscripts/scacases.pdf}
+  Manuscript, \emph{no longer} available as
+  \file{https://www.biostat.uzh.ch/research/manuscripts/scacases.pdf}
 
   Gervini, D. and Rousson, V. (2003)
   \emph{Some Proposals for Evaluating Systems of Components in Dimension
@@ -216,9 +229,9 @@ str(sc.pitp)
 
 %% MM: need a real matrix here!
 library(MASS)
-Sig <- function(p, rho) { r <- diag(p); r[col(r) != row(r)] <- rho; r}
+SigU <- function(p, rho) { r <- diag(p); r[col(r) != row(r)] <- rho; r}
 rmvN <- function(n,p, rho)
-        mvrnorm(n, mu=rep(0,p), Sigma= Sig(p, rho))
+        mvrnorm(n, mu=rep(0,p), Sigma = SigU(p, rho))
 X <- cbind(rmvN(100, 3, 0.7),
            rmvN(100, 2, 0.9),
            rmvN(100, 4, 0.8))

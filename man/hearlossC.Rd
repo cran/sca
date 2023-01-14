@@ -18,9 +18,6 @@
   \code{"Left5c",  "Left1k",  "Left2k",  "Left4k",
     "Right5c", "Right1k", "Right2k", "Right4k"}.
 }
-% \details{
-% ..
-% }
 \source{
   This is the correlation matrix of data described in Chapter 5 of
   Jackson (1991).
@@ -33,5 +30,6 @@
 \examples{
 data(hearlossC)
 symnum(hearlossC)
+sca(hearlossC) # -> explains 89.46\% instead of 91.62
 }
 \keyword{datasets}

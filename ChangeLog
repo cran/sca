@@ -1,3 +1,18 @@
+2023-01-13  Martin Maechler  <maechler@ethz.ch>
+
+	* DESCRIPTION (Version): 0.9-1;  re-submit to CRAN,
+	  as archiving (in Feb 2018) happened accidentally.
+
+	* NAMESPACE: no longer export 6 undocumented helper functions.
+
+	* man/sca.Rd: use \\doi; add 'Note' on platform dependency.
+	* tests/artif3.Rout* dropped from distribution, as platform dependent.
+
+2015-09-01  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version): 0.9-0, submitted to CRAN; "Imports" instead of Depends
+	* NAMESPACE: do import from grDevices, graphics, and stats
+
 2012-08-31  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* DESCRIPTION (Version): 0.8-9; test outputs changed, because

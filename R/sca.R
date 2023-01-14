@@ -1,5 +1,5 @@
 ## -*- mode: R; ess-indent-level: 2 -*-
-## $Id: sca.R,v 1.17 2003/07/16 17:11:15 maechler Exp $
+## $Id: sca.R,v 1.19 2015/09/01 17:12:53 maechler Exp $
 
 sca <- function(S, b = if(interactive) 5, d = 0,
                 qmin = if(interactive) 0 else 5,
@@ -44,10 +44,10 @@ sca <- function(S, b = if(interactive) 5, d = 0,
   dS <- dim(S)
   p <- dS[2]
   ## check the correlation matrix
-  if(dS[1] != p) stop("First argument `S' must be a square matrix")
+  if(dS[1] != p) stop("First argument 'S' must be a square matrix")
   if(!is.logical(tst <- all.equal.numeric(S, t(S), 100 * .Machine$double.eps))
      || !tst)
-      stop("First argument `S' must be a symmetric matrix")
+      stop("First argument 'S' must be a symmetric matrix")
   eS <- eigen(S,symmetric = TRUE)
 ### MM: FIXME pos.def. test
   if(eS$value[p] < (-0.0001))
@@ -59,7 +59,7 @@ sca <- function(S, b = if(interactive) 5, d = 0,
     invertind <- (1:p)[if(p.plus >= pminus) !iPos else iPos]
     S[,invertind] <- -S[,invertind]
     S[invertind,] <- -S[invertind,]
-    warning("some rows and columns in `S' have been inverted to avoid negative values")
+    warning("some rows and columns in 'S' have been inverted to avoid negative values")
   }
 
   S0 <- S
@@ -77,18 +77,18 @@ sca <- function(S, b = if(interactive) 5, d = 0,
 
   labvar <- dimnames(S)[[1]]
   if(is.null(labvar)) labvar <- dimnames(S)[[2]]
-  if(is.null(labvar)) labvar <- paste("V",1:p,sep = "")
+  if(is.null(labvar)) labvar <- paste0("V",1:p)
   if(!is.null(invertind))
-      labvar[invertind] <- paste("-",labvar[invertind],sep = "")
+      labvar[invertind] <- paste0("-",labvar[invertind])
 
   ##---------------Calculate first b blocks and first d differences-------------
 
-  ## We keep everything (and index by `I') such that
+  ## We keep everything (and index by 'I') such that
   ##  quick "back" and "forth" can be used interactively.
   I <- 1
   phase <- as.integer(1)
   P <- list(sortmatrix(S,diag(p)))
-  dimnames(P[[I]]) <- list(labvar,paste("B",1:p,sep = ""))
+  dimnames(P[[I]]) <- list(labvar, paste0("B",1:p))
   crit <- list(NA)
   nextpc <- list(NA)
 
@@ -104,7 +104,7 @@ sca <- function(S, b = if(interactive) 5, d = 0,
     }
     b <- p+1-I
   }
-  else { ## check and use the argument `b'
+  else { ## check and use the argument 'b'
 
     b <- round(b)
     if(b < 1) {
@@ -124,7 +124,7 @@ sca <- function(S, b = if(interactive) 5, d = 0,
 
   if(qmin > 0)
       d <- qmin-b
-  else { ## check and use the argument `d' :
+  else { ## check and use the argument 'd' :
     d <- round(d)
     if(b+d > p) ## should give a warning - at least if corblocks = 0 (?)
         d <- p-b
@@ -180,13 +180,13 @@ sca <- function(S, b = if(interactive) 5, d = 0,
     qI <- ncol(Ptmp)
     crittmp <- crit[[I]]
     okcomp <- rep(TRUE, qI)
-    message <- ""
+    messg <- ""
     warn <- ""
     if(I > 1 && phase[I] == (phase[I-1]+1) && !eqmatrix(P[[I]], P[[I-1]])) {
       warn <- "Warning: components have been reordered !"
     }
     r0 <- redrawMatrix(phase[I],I,Imax,Ptmp,crittmp,nextpc[[I]],
-		       okcomp,message,warn)
+		       okcomp,messg,warn)
     warn <- ""
 
     ## new   = T : the bottom left  button on the screen has been activated
@@ -199,7 +199,7 @@ sca <- function(S, b = if(interactive) 5, d = 0,
 
     while(!new && !valid && !back && !forth) {
 
-      message <- ""
+      messg <- ""
       replot <- FALSE
       r <- unlist(locator(1)) ## << User Input  c(x, y)
 
@@ -217,9 +217,9 @@ sca <- function(S, b = if(interactive) 5, d = 0,
 	Ptmp[i,-j] <- 0
 	okcomp <- isblockempty(Ptmp)
 	if(all(okcomp)) {
-	  message <- ""
+	  messg <- ""
 	  crittmp <- allcrit(S,Ptmp,criterion,sortP = TRUE)
-	} else message <- "some block is empty !"
+	} else messg <- "some block is empty !"
       }
 
       ##---------------Change the differences-----------------------------------
@@ -235,11 +235,11 @@ sca <- function(S, b = if(interactive) 5, d = 0,
 	okcomp[j] <- isdiffcomp(Ptmp[,j]) && (b == 1 || !withinblock ||
 					      iswithinblock(Ptmp[,j],Ptmp[,1:b]))
 	if(!withinblock && sum(okcomp) < qI)
-	    message <- "this is not a difference !"
+	    messg <- "this is not a difference !"
 	if(withinblock && sum(okcomp) < qI)
-	    message <- "this is not a (within-block) difference !"
+	    messg <- "this is not a (within-block) difference !"
 	if(sum(okcomp) == qI) {
-	  message <- ""
+	  messg <- ""
 	  crittmp <- allcrit(S,Ptmp,criterion,sortP = TRUE)
 	}
       }
@@ -278,11 +278,11 @@ sca <- function(S, b = if(interactive) 5, d = 0,
       if(I < Imax)
 	forth <- r["x"] > 1 && all(abs(c(1,1) - r) <= clickvalid)
 
-      if(phase[I] < 3 && new) message <- "calculation in progress ..."
-      if(message != "") replot <- TRUE
+      if(phase[I] < 3 && new) messg <- "calculation in progress ..."
+      if(messg != "") replot <- TRUE
       if(replot)
 	  r0 <- redrawMatrix(phase[I],I,Imax,Ptmp,crittmp,nextpc[[I]],
-			     okcomp,message,warn)
+			     okcomp,messg,warn)
     } ## while(.. present step ..)
 
     ##---------------Prepare the next step when new=TRUE------------------------
@@ -375,9 +375,9 @@ sca <- function(S, b = if(interactive) 5, d = 0,
 
   if(interactive) {
     okcomp <- rep(TRUE,dim(P[[I]])[2])
-    message <- ""
+    messg <- ""
     r0 <- redrawMatrix(phase[I],I,Imax,P[[I]],crit[[I]],nextpc[[I]],
-		       okcomp,message,warn)
+		       okcomp,messg,warn)
   }
 
   dimnames(S0) <- list(labvar,labvar)
@@ -405,13 +405,13 @@ sca <- function(S, b = if(interactive) 5, d = 0,
 ##----------------------------------------------------------------------------
 
 redrawMatrix <- function(phase, I, Imax, P, crit, nextpc,
-			 okcomp, message, warn)
+			 okcomp, messg, warn)
 {
   ## print the screen for a given system
 
   if(0 > (phase <- as.integer(phase)) || phase > 4)
-      stop("`phase' must be in 1:4")
-  if(is.null(dP <- dim(P))) stop("`P' must be a component matrix")
+      stop("'phase' must be in 1:4")
+  if(is.null(dP <- dim(P))) stop("'P' must be a component matrix")
   p <- dP[1]
   q <- dP[2]
   if(q > p) stop("q > p : should never happen")
@@ -439,9 +439,9 @@ redrawMatrix <- function(phase, I, Imax, P, crit, nextpc,
   ## colors for block-, difference-, and error - components and commands
   col <- c(b = 2, d = 4, e = 6, c = 4)
 
-  ## create message
-  if(message == "")
-    message <- paste(q,"components:    SCA =", percent(crit$cumsc,1),
+  ## create messg
+  if(messg == "")
+    messg <- paste(q,"components:    SCA =", percent(crit$cumsc,1),
                      "    PCA =", percent(crit$cumpc,1),
                      "    Opt =", percent(crit$opt,1),
                      "    Max cor =", round(crit$maxcor$val,2),
@@ -502,7 +502,7 @@ redrawMatrix <- function(phase, I, Imax, P, crit, nextpc,
   ## create titles
 
   if(phase <= 3)
-      tit1 <- paste("Stage ",phase," (Step ",I,"):", sep="")
+      tit1 <- paste0("Stage ",phase," (Step ",I,"):")
   tit1 <-
       switch(phase,
 	     paste(tit1,"Definition of block-components"),	## 1
@@ -511,12 +511,12 @@ redrawMatrix <- function(phase, I, Imax, P, crit, nextpc,
 	     "Simple components - Final system")	## 4
 
   cl1 <- "Click on 0s to modify blocks"
-  cl2 <- paste("Click on entries of ",dn[[2]][b+1]," to change signs",sep = "")
-  cl3 <- paste("Click on entries of ",dn[[2]][b+1],"-",dn[[2]][q]," to change signs",sep = "")
-  cl4 <- paste("Click on entries of ",dn[[2]][b+1]," to delete component",sep = "")
-  cl5 <- paste("Click on entries of ",dn[[2]][b+1],"-",dn[[2]][q]," to delete component",sep = "")
+  cl2 <- paste0("Click on entries of ",dn[[2]][b+1]," to change signs")
+  cl3 <- paste0("Click on entries of ",dn[[2]][b+1],"-",dn[[2]][q]," to change signs")
+  cl4 <- paste0("Click on entries of ",dn[[2]][b+1]," to delete component")
+  cl5 <- paste0("Click on entries of ",dn[[2]][b+1],"-",dn[[2]][q]," to delete component")
   cl6 <- "Click on GROUP to agglomerate blocks"
-  cl7 <- paste("Click on NEXT to calculate D",q+1,sep = "")
+  cl7 <- paste0("Click on NEXT to calculate D", q+1)
 
   cl11 <- "There is only one block"
   cl12 <- "Maximum number of components attained"
@@ -563,13 +563,13 @@ redrawMatrix <- function(phase, I, Imax, P, crit, nextpc,
 	   ""
 	 })
 
-  ## print titles and messages
+  ## print titles and messgs
   par(adj = 0.5)
 
   title(main = paste(tit1,"\n",tit2),	cex = 0.7)
   ## FIXME: use mtext() instead
-  title(sub = message, mgp = c(1,1,0),	cex = 1)
-  title(sub = warn,    mgp = c(2.5,1,0),cex = 1)
+  title(sub = messg, mgp = c(1,1,0),  cex = 1)
+  title(sub = warn,  mgp = c(2.5,1,0), cex = 1)
 
   list(x= xcord, y=ycord)
 } ## redrawMatrix()
@@ -608,9 +608,9 @@ agglomblock <- function(S, P, cluster = c("median","single","complete"))
     }
   }
   P[,i0] <- P[,i0]+P[,j0]
-  P <- sortmatrix(S,P[,-j0])
-  dimnames(P)[[2]] <- paste("B",1:(b-1),sep = "")
-  return(P)
+  P <- sortmatrix(S, P[,-j0])
+  dimnames(P)[[2]] <- paste0("B",1:(b-1))
+  P
 }
 
 ##----------------------------------------------------------------------------
@@ -653,7 +653,7 @@ nextdiff <- function(S,P, withinblock, criterion = c("csv", "blp"))
   }
 
   P <- cbind(P,scompmax)
-  dimnames(P)[[2]][q+1] <- paste("D",q+1,sep = "")
+  dimnames(P)[[2]][q+1] <- paste0("D",q+1)
 
   list(P=P, nextpc=nextpc)
 }
@@ -694,15 +694,16 @@ simpvector <- function(x) {
   nneg <- sum(x < 0)
   if(nneg > 0) x[x > 0] <- nneg
   if(npos > 0) x[x < 0] <- -npos
+  ## MM: ensure we use exact integer arithmetic
   if(nneg > 0 || npos > 0) {
-    while(sum(x%%2) == 0) x <- x/2
-    while(sum(x%%3) == 0) x <- x/3
-    while(sum(x%%5) == 0) x <- x/5
-    while(sum(x%%7) == 0) x <- x/7
-    if(nneg > 1) while(sum(x%%nneg) == 0) x <- x/nneg
-    if(npos > 1) while(sum(x%%npos) == 0) x <- x/npos
+    while(sum(x%%2) == 0) x <- x %/% 2
+    while(sum(x%%3) == 0) x <- x %/% 3
+    while(sum(x%%5) == 0) x <- x %/% 5
+    while(sum(x%%7) == 0) x <- x %/% 7
+    if(nneg > 1) while(sum(x%%nneg) == 0) x <- x %/% nneg
+    if(npos > 1) while(sum(x%%npos) == 0) x <- x %/% npos
   }
-  return(x)
+  x
 }
 
 ##----------------------------------------------------------------------------
@@ -744,7 +745,7 @@ allcrit <- function(S,P, criterion, sortP = TRUE)
   P <- normmatrix(P)
   q <- ncol(P)
   tr.S <- sum(diag(S))
-  varpc <- eigen(S,symmetric = TRUE)[[1]][1:q] / tr.S
+  varpc <- eigen(S, symmetric = TRUE, only.values=TRUE)$values[1:q] / tr.S
   varsc <- diag(covcomp(S,P)) / tr.S
   cumpc <- sum(varpc)## == cumsum(varpc)[q]
   cumsc <- sccrit(S,P,criterion,sortP)[q]
@@ -767,19 +768,19 @@ sccrit <- function(S,P, criterion, sortP = TRUE) {
   q <- ncol(P)
   varsc <- numeric(q)
   for(k in 1:q) {
-    if(k > 1) {
+    Ak <- if(k > 1) {
       Pk <- P[,1:(k-1)]
-      Ak <- crossprod(Pk, S)
-      Ak <- S - crossprod(Ak, solve(Ak %*% Pk, Ak))
-    } else Ak <- S
+      P.S <- crossprod(Pk, S)
+      S - crossprod(P.S, solve(P.S %*% Pk, P.S))
+    } else S
     pk <- P[,k]
     varsc[k] <-
 	switch(criterion,
-	       "csv" = crossprod(pk,Ak)%*% pk,
-	       "blp" = (crossprod(pk, Ak %*% Ak) %*% pk) / (crossprod(pk,Ak)%*% pk))
+	       "csv" = crossprod(pk,Ak) %*% pk,
+	       "blp" = (crossprod(pk, Ak %*% Ak) %*% pk) / (crossprod(pk,Ak) %*% pk))
   }
 
-  return(cumsum(varsc) / sum(diag(S)))
+  cumsum(varsc) / sum(diag(S))
 }
 
 ##----------------------------------------------------------------------------
@@ -809,8 +810,8 @@ firstpcres <- function(S,P) {
   A <- crossprod(P, S)
   A <- S - crossprod(A, solve(A %*% P, A))
 
-  pc <- eigen(A, symmetric = TRUE)[[2]][,1]
-  return(pc)
+  ## Return first eigen vector :
+  eigen(A, symmetric = TRUE)$vectors[,1]
 }
 
 corcomp <- function(S,P) {
@@ -818,18 +819,19 @@ corcomp <- function(S,P) {
 
   P <- normmatrix(P)
   A <- crossprod(P, as.matrix(S)) %*% P ## the covariance
-  return(cov2cor(A))
+  cov2cor(A)
 }
 
 ##----------------------------------------------------------------------------
 
 ## FIXME: efficiency : this is only used as  diag(covcomp(S,P)) !!!
+## .../MATRIX/TODO:   if A %*% B is square,  diag(A %*% B) === colSums(t(A) * B)
 covcomp <- function(S,P) {
 ## return the variance-covariance matrix of the components P on S
 
   P <- normmatrix(P)
-  A <- crossprod(P, as.matrix(S)) %*% P
-  return(A)
+  ## return
+  crossprod(P, as.matrix(S)) %*% P
 }
 
 ##----------------------------------------------------------------------------
@@ -882,7 +884,7 @@ sortmatrix <- function(S,P) {
   d <- diag(covcomp(S,P))
   P[,] <- P[,c(iblock[sort.list(-d[iblock])],
 	       i.diff[sort.list(-d[i.diff])])]
-  return(P)
+  P
 }
 
 ##----------------------------------------------------------------------------

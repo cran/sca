@@ -1,6 +1,12 @@
 TODO (mostly to myself, some in German)
 =====
 
+12) tests/artif3.R : the Sig() is "silly": The covariance matrix has an
+    ~~~~~~~~~~~~~~   Eigen decomposition where some of the eigen vectors
+    are very ill-determined ==> platform dependent :
+     ./tests/artif3.Rout-32b vs ./tests/artif3.Rout-64b
+    ===> use another Sig() !
+
 2)  jetzige Print methode print.simpcomp() schreibt sehr viel
     ==> Vorschlag, dies wird "summary()",
     und ich schreibe Methode mit kürzerem Output.
