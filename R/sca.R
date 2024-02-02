@@ -891,15 +891,8 @@ sortmatrix <- function(S,P) {
 ##-------------------PRINTING CRITERIA PROCEDURE------------------------------
 ##----------------------------------------------------------------------------
 
-percent <-  {
-  if(is.R())## work around R's format(*, nsmall = . ) bug:
-      function(p, d = 0, sep=" ")
-          paste(formatC(round(100 * p, d), format="f", digits= d), "%",
-                sep = sep)
-  else
-      function(p, d = 0, sep=" ")
-          paste(format(round(100 * p, d), nsmall= d), "%", sep = sep)
-}
+percent <- function(p, d = 0, sep=" ")
+  paste(format(round(100 * p, d), nsmall= d), "%", sep = sep)
 
 print.simpcomp <- function(x, ndec = 2, ...) {
 
